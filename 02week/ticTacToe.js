@@ -67,13 +67,58 @@ function checkForWin() {
   }
 }
 
-function ticTacToe(row) {
-  console.log('row is ' + row);
-  if (row === 0) {
-    console.log('Row is 0!');
+function ticTacToe(row, column) {
+  if (row > 2 || column > 2) {
+    console.log('Please keep your position on the board. Between 0 and 2.');
+  } else if (row < 0 || column < 0) {
+    console.log('Please keep your position on the board. Between 0 and 2.');
   } else {
-    console.log('Row isnt 0');
+    let rowNum = row * 1;
+    let colNum = column * 1;
+
+    function placeOnBoard(rowNum, colNum) {
+      var turnCounter = 1;
+
+    if (turnCounter == 2 || 4 || 6 || 8 || 10) {
+      playerTurn = "O";
+      board[rowNum][colNum] = playerTurn;
+      return turnCounter + 1;
+    } else if (turnCounter == 1 || 3 || 5 || 7 || 9) {
+      playerTurn = "X";
+      board[rowNum][colNum] = playerTurn;
+      return turnCounter + 1;
+    } else if (turnCounter > 3) {
+      console.log('This game is a tie!')
+    }
+    }
+
+    placeOnBoard(rowNum, colNum);
+
+    
+    
+    // for (var i = 1; i < 11; i++) {
+    //   if (i % 2 == 0) {
+    //     playerTurn = "Y";
+    //     board[rowNum][colNum] = playerTurn;
+    //     console.log('This is i ' + i);
+    //     return playerTurn;
+    //   } else if (i == 10) {
+    //     console.log('Its a tie!');
+    //   } else {
+    //     playerTurn = "Z";
+    //     board[rowNum][colNum] = playerTurn;
+    //     console.log('This is i ' + i);
+    //     return playerTurn;
+    //   }
+    // }
+    
+    
   }
+
+  
+
+
+
 }
 
 function getPrompt() {
@@ -81,7 +126,7 @@ function getPrompt() {
   console.log("It's Player " + playerTurn + "'s turn.");
   rl.question('row: ', (row) => {
     rl.question('column: ', (column) => {
-      ticTacToe(row);
+      ticTacToe(row, column);
       getPrompt();
     });
   });
