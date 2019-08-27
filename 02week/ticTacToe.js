@@ -66,60 +66,42 @@ function checkForWin() {
     return false;
   }
 }
-
+var counter = 0;
 function ticTacToe(row, column) {
-  if (row > 2 || column > 2) {
-    console.log('Please keep your position on the board. Between 0 and 2.');
-  } else if (row < 0 || column < 0) {
-    console.log('Please keep your position on the board. Between 0 and 2.');
-  } else {
-    let rowNum = row * 1;
-    let colNum = column * 1;
+  let rowNum = row * 1;
+  let colNum = column * 1;
 
-    function placeOnBoard(rowNum, colNum) {
-      var turnCounter = 1;
+  if (rowNum > 2 || colNum > 2) {
+    console.log('Please keep your position on the board. Between 0 and 2.');
+      if (rowNum < 0 || colNum < 0) {
+        console.log('Please keep your position on the board. Between 0 and 2.');
+      
+      }
 
-    if (turnCounter == 2 || 4 || 6 || 8 || 10) {
+    }
+    board[rowNum][colNum] = playerTurn;
+    checkForWin();
+    if (checkForWin() == true) {
+      console.log(playerTurn + ' Wins!');
+    } 
+    counter++
+    switchPlayer();
+    if(counter === 9){
+      console.log("Tie!")
+    }
+
+  function switchPlayer(){
+    if(playerTurn === "X"){
       playerTurn = "O";
-      board[rowNum][colNum] = playerTurn;
-      return turnCounter + 1;
-    } else if (turnCounter == 1 || 3 || 5 || 7 || 9) {
+      return playerTurn
+    }if(playerTurn === "O"){
+      console.log("inside switch")
       playerTurn = "X";
-      board[rowNum][colNum] = playerTurn;
-      return turnCounter + 1;
-    } else if (turnCounter > 3) {
-      console.log('This game is a tie!')
+      return playerTurn
     }
-    }
-
-    placeOnBoard(rowNum, colNum);
-
-    
-    
-    // for (var i = 1; i < 11; i++) {
-    //   if (i % 2 == 0) {
-    //     playerTurn = "Y";
-    //     board[rowNum][colNum] = playerTurn;
-    //     console.log('This is i ' + i);
-    //     return playerTurn;
-    //   } else if (i == 10) {
-    //     console.log('Its a tie!');
-    //   } else {
-    //     playerTurn = "Z";
-    //     board[rowNum][colNum] = playerTurn;
-    //     console.log('This is i ' + i);
-    //     return playerTurn;
-    //   }
-    // }
-    
-    
   }
-
-  
-
-
-
 }
+
 
 function getPrompt() {
   printBoard();
