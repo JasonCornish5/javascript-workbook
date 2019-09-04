@@ -19,14 +19,8 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-  // Your code here
-
-}
-
-function isLegal() {
-  // Your code here
-
+function movePiece(startStack, endStack) {
+  
 }
 
 function checkForWin() {
@@ -34,16 +28,70 @@ function checkForWin() {
 
 }
 
-function towersOfHanoi(startStack, endStack) {
-  // Your code here
+var startRow = 0;
+var endRow = 0;
 
+function towersOfHanoi(startStack, endStack, stacks) {
+    if (startStack === 'a') {
+      startRow = stacks.a;
+    } else if (startStack === 'b') {
+      startRow = stacks.b;
+    } else if (startStack === 'c') {
+      startRow = stacks.c;
+    }
+
+    if (endStack === 'a') {
+      endRow = stacks.a;
+    } else if (endStack === 'b') {
+      endRow = stacks.b;
+    } else if (endStack === 'c') {
+      endRow = stacks.c;
+    }
+
+    // isLegal(startRow)
+    
+    var trueLengthI = startRow.length - 1;
+    var trueLengthA = endRow.length - 1;
+
+    for (var i = 0; i <= startRow.length; i++){
+
+      if (i == trueLengthI) {
+        var maxI = startRow[i];
+        }
+      }
+     
+
+    for (var a = 0; a <= endRow.length; a++) {
+      if (a == trueLengthA) {
+        var maxA = endRow[a];
+      }
+    }
+
+    if (maxI > maxA) {
+      console.log('Your end stack cannot be larger than your start stack!');
+    } else {
+      var removedStart = startRow.pop();
+      var pushEnd = endRow.push(removedStart);
+      pushEnd;
+    }
+
+    for (var w = 0; w <= endRow.length; w++) {
+      if (stacks.b.length == 4) {
+        console.log('Youve won!');
+        return towersOfHanoi = true;
+        
+        } else if (stacks.c.length == 4) {
+        console.log('Youve won!');
+        return towersOfHanoi = true;
+      }
+    }
 }
 
 function getPrompt() {
   printStacks();
   rl.question('start stack: ', (startStack) => {
     rl.question('end stack: ', (endStack) => {
-      towersOfHanoi(startStack, endStack);
+      towersOfHanoi(startStack, endStack, stacks);
       getPrompt();
     });
   });
