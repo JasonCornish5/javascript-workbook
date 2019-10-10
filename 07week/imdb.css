@@ -1,0 +1,65 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 1000px
+}
+
+#input {
+    width: 30%;
+    height: 30%;
+}
+
+#input div {
+    font-family: arial;
+    font-weight: bold;
+}
+
+#input input {
+    width: 100%;
+    height: 40%;
+    margin-bottom: 20px;
+
+}
+
+#button {
+    width: 100%;
+    height: 20%;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: arial;
+}
+
+#results {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.col h1 {
+    margin: 0px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.col img {
+    margin: 0px;
+    width: 100%;
+    height: 80%;
+}
+
+.col p {
+    margin: 0px;
+    font-size: 30px;
+}
