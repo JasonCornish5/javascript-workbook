@@ -7,14 +7,16 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-
 function Checker() {
-  // Your code here
+
 }
 
 class Board {
   constructor() {
-    this.grid = []
+    this.grid = [];
+    this.redPiece = "R";
+    this.blackPiece = "B";
+    this.checkers = [];
   }
   // method that creates an 8x8 array, filled with null values
   createGrid() {
@@ -38,7 +40,7 @@ class Board {
         // if the location is "truthy" (contains a checker piece, in this case)
         if (this.grid[row][column]) {
           // push the symbol of the check in that location into the array
-          rowOfCheckers.push(this.grid[row][column].symbol);
+          rowOfCheckers.push(this.grid[row][column]);
         } else {
           // just push in a blank space
           rowOfCheckers.push(' ');
@@ -52,7 +54,31 @@ class Board {
     console.log(string);
   }
 
-  // Your code here
+
+  initializeGrid(){
+    for(let row1 = 0; row1 < 3; row1++) {
+      for(let col1 = 0; col1 < 8; col1++) {
+        if (row1 % 2 === 0 && col1 % 2 === 1) {
+          this.grid[row1][col1] = this.redPiece;
+        }
+        if (row1 % 2 === 1 && col1 % 2 === 0) {
+          this.grid[row1][col1] = this.redPiece;
+        }
+      }
+    }
+    for(let row2 = 7; row2 > 4; row2--) {
+      for(let col2 = 0; col2 < 8; col2++) {
+        if (row2 % 2 === 0 && col2 % 2 === 1) {
+          this.grid[row2][col2] = this.blackPiece;
+        }
+        if (row2 % 2 === 1 && col2 % 2 === 0) {
+          this.grid[row2][col2] = this.blackPiece;
+        }
+      }
+    }
+  }
+
+  
 }
 
 class Game {
@@ -61,7 +87,28 @@ class Game {
   }
   start() {
     this.board.createGrid();
+    this.board.initializeGrid();
   }
+
+  
+
+  moveChecker(xx, yy) {
+
+    playerTurn();
+    Checker();
+    let start = xx.split('');
+    let end = yy.split('');
+    let startRow = start[0];
+    let startCol = start[1];
+    let endRow = end[0];
+    let endCol = end[1];
+    console.log(startRow);
+    console.log(startCol);
+
+     this.board.grid[startRow][startCol] = " ";
+     this.board.grid[endRow][endCol] = playerTurn;
+  }
+
 }
 
 function getPrompt() {
