@@ -28,13 +28,72 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
-  // your code here
+let redHint = [0];
+let blueHint = [0];
+let hint = [];
+let hintCopy = [];
+let letterChecker = [0, 0, 0, 0];
+
+
+function generateHint(guess) {
+  let solutionArr = solution.split('');
+
+  let guessArr = guess.split('');
+  let guessCopy = guessArr.slice(0);
+
+  for (var i = 0; i < guessArr.length; i++) {
+    for (var a = 0; a < solutionArr.length; a++) {
+
+      if (guessArr[i] === solutionArr[a]) {
+        for (var j = 0; j < guessArr.length; j++) {
+          for (var b = 0; b < guessCopy.length; b++) {
+            var c = b + 1;
+            if (arr[j] == arr[b] && arr[j] == arr[c]) {
+              letterChecker[j] = + 1;
+            }
+          }
+        }
+        if (i == a) {
+          if (letterChecker[i] == 0) {
+            redHint[0]++;
+          } else if (letterChecker[i] == 1) {
+            
+          }
+          
+        }
+
+        if (i !== a) {
+          blueHint[0]++
+        }
+      }
+    }
+  }
+  hint[0] = redHint[0];
+  hint[1] = blueHint[0];
+  redHint = [0];
+  blueHint = [0];
+  hintCopy[0] = hint[0];
+  hintCopy[1] = hint[1];
+  hint = [];
+  return hintCopy;
 }
 
+//transform guess into an array and split up by letters. Check for uppercase and only letters between a and h. run a for loop on
+//the split guess array then run another loop inside of that one checking if guess letters equal solution letters. Create
+//an if statement checking if the value of i equals the value of a
+//of that if statement run another checking if 
+
 function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+   solution = 'abcd';
+
+  generateHint(guess)
+  console.log(hintCopy[0] + '-' + hintCopy[1]);
+
+  if (solution == guess) {
+    console.log('You guessed it!');
+  }
+  
+  
 }
 
 
